@@ -81,7 +81,7 @@ public class RSA {
    }
    
    /**
-    * aplica metodo de verificação de assinatura através de A^e mod n = M <code>false</code> caso contrário. 
+    * aplica metodo de verificação de assinatura através de A^e mod n = M  
     * onde: 
     * A = mensagem assinada
     * e = primo relativo a phi 
