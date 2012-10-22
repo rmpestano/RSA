@@ -4,7 +4,6 @@
  */
 package br.ufrgs.rmpestano.rsa;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 
 /**
