@@ -2,11 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package rsa;
+package br.ufrgs.rmpestano.rsa;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import org.apache.commons.codec.DecoderException;
 
 /**
  *
@@ -17,7 +16,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws UnsupportedEncodingException, DecoderException {
+    public static void main(String[] args) {
       BigInteger p;
       BigInteger q;
       BigInteger e;
@@ -41,7 +40,7 @@ public class Main {
       
       
       
-      RSA RSA = new RSA(p,q,e);
+      RSA RSA = new RSAImpl(p,q,e);
       System.out.println(RSA);
  
       //// create message by converting string to integer
