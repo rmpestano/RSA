@@ -8,7 +8,7 @@ To run this program you will need to provide four arguments: p, q, e and message
   * e: a relative prime of (p-1) * (q-1) also know as phi(n)
   * m: a String message to be encriped, decriped and verified through a sighed certificate
 
-if none of the inputs are provided the following values will be used:
+if none of the inputs are provided the following values will be used as default:
 
   * p = "5700734181645378434561188374130529072194886062117"
   * q = "35894562752016259689151502540913447503526083241413"
