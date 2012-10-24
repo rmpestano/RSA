@@ -4,7 +4,10 @@
  */
 package br.ufrgs.rmpestano.rsa;
 
+import java.io.File;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,47 +19,59 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      BigInteger p;
-      BigInteger q;
-      BigInteger e;
-      BigInteger message;
-      if(args.length != 4){
-          p = new BigInteger("5700734181645378434561188374130529072194886062117");
-          q = new BigInteger("35894562752016259689151502540913447503526083241413");
-          e = new BigInteger("33445843524692047286771520482406772494816708076993");
-          message = new BigInteger("This is a test".getBytes());
-//          p = new BigInteger("101");
+        BigInteger p;
+        BigInteger q;
+        BigInteger e;
+        final String message;
+        boolean isFile = false;
+        if (args.length != 4) {//at leat four parametter should be given
+            p = new BigInteger("5700734181645378434561188374130529072194886062117");
+            q = new BigInteger("35894562752016259689151502540913447503526083241413");
+            e = new BigInteger("33445843524692047286771520482406772494816708076993");
+            message = "This is a test";
+            
+            //below are also valid primes
+//          p = new BigInteger("101"); 
 //          q = new BigInteger("113");
 //          e = new BigInteger("3533");
-//          message = new BigInteger("9726");
-      }
-      else{
-          p = new BigInteger(args[0]);
-          q = new BigInteger(args[1]);
-          e = new BigInteger(args[2]);
-          message = new BigInteger(args[3]);
-      }
-      
-      
-      
-      RSA RSA = new RSAImpl(p,q,e);
-      System.out.println(RSA);
- 
-      //// create message by converting string to integer
-      // String s = "test";
-      // byte[] bytes = s.getBytes();
-      // BigInteger message = new BigInteger(s);
-//      message = new BigInteger("t".getBytes());
-      BigInteger encrypt = RSA.encrypt(message);
-      BigInteger decrypt = RSA.decrypt(encrypt);
-      BigInteger sign = RSA.sign(message);
-      BigInteger verify = RSA.Verify(sign); 
-      System.out.println("message(bytes)     = " +new String(message.toByteArray()));
-      System.out.println("message(decimal)   = " + message);
-      System.out.println("encrpyted          = " + encrypt);
-      System.out.println("decrypted          = " + decrypt);
-      System.out.println("signed             = " + sign);
-      System.out.println("verify             = " + verify);
-      System.out.println("verified           = " + RSA.isVerified(sign, message));
+        } else {
+            p = new BigInteger(args[0]);
+            q = new BigInteger(args[1]);
+            e = new BigInteger(args[2]);
+            if (args[3].contains("-f")) {
+                isFile = true;
+                message = args[3].substring(2);
+            }
+            else{
+                message = args[3];
+             }
+        }
+            
+
+        RSA RSA = new RSAImpl(p, q, e);
+        System.out.println(RSA);
+
+        List<BigInteger> encryption;
+        List<BigInteger> signed;
+        List<BigInteger> decimalMessage;
+        if(isFile){
+            encryption = RSA.encryptFile(message);
+            signed = RSA.signFile(message);
+            decimalMessage = RSA.fileToDecimal(message);
+        } else {
+            encryption = RSA.encryptMessage(message);
+            signed = RSA.signMessage(message);
+            decimalMessage = RSA.messageToDecimal(message);
+        }
+
+        List<BigInteger> decrypt = RSA.decrypt(encryption);
+        List<BigInteger> verify = RSA.verify(signed);
+        
+        System.out.println("message(decimal)      = " + Utils.bigIntegerSum(decimalMessage));
+        System.out.println("encription(decimal)   = " + Utils.bigIntegerSum(encryption));
+        System.out.println("decrypted(decimal)    = " + Utils.bigIntegerSum(decrypt));
+        System.out.println("decrypted(plain text) = " + Utils.bigIntegerToString(decrypt));
+        System.out.println("signed(decimal)       = "    + Utils.bigIntegerSum(signed));
+        System.out.println("verified(decimal)     = "    + Utils.bigIntegerSum(verify));
     }
 }
