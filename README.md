@@ -38,3 +38,5 @@ to read from a file the last argument must be prefixed by a '-f' plus the path t
 java -jar RSA.jar "101" "113" "3533" "-f\home\rmpestano\rsa.txt"
 
 RSA.jar can be found in [download section ](RSA/downloads)
+
+Note that this implementation does not use any third party libs neither the 'java.security' package. 
