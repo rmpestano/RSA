@@ -4,9 +4,7 @@
  */
 package br.ufrgs.rmpestano.rsa;
 
-import java.io.File;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,12 +64,13 @@ public class Main {
 
         List<BigInteger> decrypt = RSA.decrypt(encryption);
         List<BigInteger> verify = RSA.verify(signed);
-        
+        System.out.println();
+        System.out.println("message(plain text)   = " + Utils.bigIntegerToString(decimalMessage));
         System.out.println("message(decimal)      = " + Utils.bigIntegerSum(decimalMessage));
-        System.out.println("encription(decimal)   = " + Utils.bigIntegerSum(encryption));
+        System.out.println("encripted(decimal)    = " + Utils.bigIntegerSum(encryption));
         System.out.println("decrypted(decimal)    = " + Utils.bigIntegerSum(decrypt));
         System.out.println("decrypted(plain text) = " + Utils.bigIntegerToString(decrypt));
-        System.out.println("signed(decimal)       = "    + Utils.bigIntegerSum(signed));
-        System.out.println("verified(decimal)     = "    + Utils.bigIntegerSum(verify));
+        System.out.println("signed(decimal)       = " + Utils.bigIntegerSum(signed));
+        System.out.println("verified(decimal)     = " + Utils.bigIntegerSum(verify));
     }
 }
