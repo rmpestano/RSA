@@ -6,7 +6,7 @@ To run this program you will need to provide four arguments: p, q, e and message
   * p: a prime
   * q: another prime
   * e: a relative prime of (p-1) * (q-1) also know as phi(n)
-  * m: a String message to be encriped, decriped and verified through a sighed certificate
+  * m: a String message to be encriped, decriped, signed and verified through a digital signed certificate
 
 if none of the inputs are provided the following values will be used as default:
 
