@@ -39,4 +39,4 @@ java -jar RSA.jar "101" "113" "3533" "-f\home\rmpestano\rsa.txt"
 
 RSA.jar can be found in [download section ](RSA/downloads)
 
-Note that this implementation does not use any third party libs neither the 'java.security' package, its intend to be simple for academical learning . 
+Note that this implementation does not use any third party libs neither the 'java.security' package, its intend to be simple for academical learning and of course can have bugs so DO NOT USE in any professional proects. 
