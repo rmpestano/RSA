@@ -68,9 +68,10 @@ public class Main {
         System.out.println("message(plain text)   = " + Utils.bigIntegerToString(decimalMessage));
         System.out.println("message(decimal)      = " + Utils.bigIntegerSum(decimalMessage));
         System.out.println("encripted(decimal)    = " + Utils.bigIntegerSum(encryption));
-        System.out.println("decrypted(decimal)    = " + Utils.bigIntegerSum(decrypt));
         System.out.println("decrypted(plain text) = " + Utils.bigIntegerToString(decrypt));
+        System.out.println("decrypted(decimal)    = " + Utils.bigIntegerSum(decrypt));
         System.out.println("signed(decimal)       = " + Utils.bigIntegerSum(signed));
+        System.out.println("verified(plain text)  = " + Utils.bigIntegerToString(verify));
         System.out.println("verified(decimal)     = " + Utils.bigIntegerSum(verify));
     }
 }
